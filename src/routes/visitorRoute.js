@@ -14,6 +14,8 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   async(req, res)=>{VisitorController.getPurposeField(req, res)}
 );
+
+
 router.get(
   '/staff',
   passport.authenticate('jwt', { session: false }),

@@ -181,6 +181,27 @@ router.delete(
   passport.authenticate('jwt', { session: false }),
   async(req, res) => { workspaceController.deleteCompany(req, res) }
 );
+
+
+/**
+ * @swagger
+ * /users/workspace-companies/{id}:
+ *  put:
+ *    summary: To update estate using id
+ *    
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema: 
+ *          type: integer
+ *        required: true
+ *        description: Numeric ID of estate to update
+ *        
+ *    
+ *    responses: 
+ *        200:
+ *            description: To update estate using i
+ */
 router.put(
   '/workspace-companies/:id',
   passport.authenticate('jwt', { session: false }),
@@ -201,6 +222,8 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   async(req, res) => { estateController.searchHouse(req, res) }
 );
+
+
 router.delete(
   '/estate-houses/:id',
   passport.authenticate('jwt', { session: false }),
