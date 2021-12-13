@@ -9,25 +9,25 @@ module.exports = function validateRegisterInput(data) {
         return Object.prototype.hasOwnProperty.call(data, key) || false;
       };
       if (!doesKeyExist(`company_name`)) {
-        errors.company_name = 'Add key company_name';
+        errors.message = 'Add key company_name';
       }
       if (!doesKeyExist(`email`)) {
-        errors.email = 'Add key email';
+        errors.message = 'Add key email';
       }
       if (!doesKeyExist(`password`)) {
-        errors.password = 'Add key password';
+        errors.message = 'Add key password';
       }
       if (!doesKeyExist(`password2`)) {
-        errors.password2 = 'Add key password_2';
+        errors.message = 'Add key password_2';
       }
       if (!doesKeyExist(`last_name`)) {
-        errors.last_name = 'Add key last_name';
+        errors.message = 'Add key last_name';
       }
       if (!doesKeyExist(`first_name`)) {
-        errors.first_name = 'Add key first_name';
+        errors.message = 'Add key first_name';
       }
       if (!doesKeyExist(`option`)) {
-        errors.option = 'Add key option';
+        errors.message = 'Add key option';
       }
       console.log('kkk')
       data.company_name = data.company_name ? data.company_name : '';
@@ -38,34 +38,34 @@ module.exports = function validateRegisterInput(data) {
       data.last_name = data.last_name ? data.last_name : '';
       
       if (!Validator.isLength(data.company_name, { min: 2, max: 40 })) {
-        errors.company_name = 'Name must be between 2 and 40 characters';
+        errors.message = 'Name must be between 2 and 40 characters';
       }
     
       if (Validator.isEmpty(data.company_name)) {
-        errors.company_name = 'Name field is required';
+        errors.message = 'Name field is required';
       }
       if (Validator.isEmpty(data.email)) {
-        errors.email = 'Email field is required';
+        errors.message = 'Email field is required';
       }
     
       if (!Validator.isEmail(data.email)) {
-        errors.email = 'Email is invalid';
+        errors.message = 'Email is invalid';
       }
     
       if (!Validator.isAlphanumeric(String(data.password))) {
-        errors.password = 'Password must be alphanumeric';
+        errors.message = 'Password must be alphanumeric';
       }
     
       if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-        errors.password = 'Password must be at least 6 characters';
+        errors.message = 'Password must be at least 6 characters';
       }
     
       if (Validator.isEmpty(data.password2)) {
-        errors.password2 = 'Confirm password field is required';
+        errors.message = 'Confirm password field is required';
       }
     
       if (!Validator.equals(data.password, data.password2)) {
-        errors.password2 = 'Passwords must match';
+        errors.message = 'Passwords must match';
       }
     
      /**
@@ -81,7 +81,7 @@ module.exports = function validateRegisterInput(data) {
     
       
       if(!(String(data.option).toLowerCase() == 'office' || String(data.option).toLowerCase() == 'workspace' || String(data.option).toLowerCase() == 'estate')){
-        errors.option = 'Options are wrong';
+        errors.message = 'Options are wrong';
       }
 
   // data.email = data.email ? data.email : ''

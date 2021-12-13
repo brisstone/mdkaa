@@ -45,8 +45,8 @@ const {
   default_host,
   workspace_company,
   visit_types_config,
-  VisitorWelcomeMessage,
-  CompanyWelcomeGraphic,
+  visitor_welcome_message,
+  company_welcome_graphic,
   visitorsuite_phone,
   visitorsuite_location,
   estate_house,
@@ -3084,7 +3084,7 @@ const VisitorController = {
         switch (visitTypeConfig.welcome_message) {
           case 'text':
             {
-              const textMessage = await VisitorWelcomeMessage.findOne({
+              const textMessage = await 	visitor_welcome_message.findOne({
                 where: {
                   company: req.user.company,
                   location: req.user.location,
@@ -3099,7 +3099,7 @@ const VisitorController = {
             break;
           case 'image':
             {
-              const imageMessage = await CompanyWelcomeGraphic.findOne({
+              const imageMessage = await company_welcome_graphic.findOne({
                 company: req.user.company,
                 location: req.user.location,
                 visit_type
@@ -3113,7 +3113,7 @@ const VisitorController = {
         }
       } else {
         // if none is set for this visit type, use the general welcome image
-        const defaultImage = await CompanyWelcomeGraphic.findOne({
+        const defaultImage = await company_welcome_graphic.findOne({
           where: {
             company: req.user.company,
             location: req.user.location,

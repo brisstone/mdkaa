@@ -87,7 +87,7 @@ router.get('/staff-sample', async(req, res) => { UserController.downloadStaffCsv
  *        200:
  *            description: test user sign-in
  */
-router.post('/sign-up', async(req, res) => {UserController.SignUp(req, res) });
+router.post('/sign-up', async(req, res) => {UserController.SignUp(req, res)});
 
 
 

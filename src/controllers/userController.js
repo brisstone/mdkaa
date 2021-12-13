@@ -98,7 +98,7 @@ var UserController = module.exports = {
         }
       });
       if (company_name) {
-        errors.email = 'Email already exists';
+        errors.message = 'Email already exists';
         return res.status(400).json(errors);
       } else {
       
@@ -174,7 +174,7 @@ var UserController = module.exports = {
       }
     } catch (err) {
       console.log(err)
-      res.status(500).send({ errors: { company_name: 'internal server error' } });
+      res.status(500).send({ message: 'internal server error' });
     }
   },
 
@@ -187,17 +187,26 @@ var UserController = module.exports = {
    * @rout POST: '/api/v1/users/sign-in'
    */
   async signIn(req, res) {
+    // console.log(req, "kiiiiiiiiiiiiiiiyyyyyyyyyyyyy")
+    // res.sendStatus(200)
+    const me ={
+      message: "yollllllu"
+    }
+    // res.status(400).json("jjjjlssssssssssssssssssssssj");
     try {
       console.log('u8')
       
       const { errors, isValid } = validateLoginInput(req.body);
 
       // Check for validation
+    
       if (!isValid) {
+      console.log("lalalallala")
         return res.status(400).json(errors);
+        
       }
 
-
+      console.log("kkkkkkkkkkkkkkkkkkkkkkkkj")
       const num = 28
       const pee = await visitorsuite_company_plan.findOne({ where: { company: num } });
       console.log(pee, 'kkkkiu')
@@ -209,7 +218,7 @@ var UserController = module.exports = {
       // check if user exists
       // console.log('iuuiu', user)
       if (!user) {
-        errors.email = 'User not found';
+        errors.message = 'User not found';
         return res.status(404).json(errors);
       }
 
@@ -269,7 +278,8 @@ var UserController = module.exports = {
           });
         });
       } else {
-        errors.password = 'Password incorrect';
+        errors.message = 'Password incorrect';
+        console.log(errors, "kkkkkkkkkkkkkkk")
         res.status(400).json(errors);
       }
     } catch (err) {
